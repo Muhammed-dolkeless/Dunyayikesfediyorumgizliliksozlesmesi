@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mırmır Android uygulamasının gizlilik politikası.">
+  <meta name="color-scheme" content="light">
+  <title>Mırmır Gizlilik Politikası</title>
+  <style>
+    :root {
+      --background: #f6f7f9;
+      --surface: #ffffff;
+      --text: #20242b;
+      --muted: #606772;
+      --border: #dfe3e8;
+      --accent: #7a4f38;
+      --accent-soft: #f3ebe6;
+      --link: #295f9e;
+      --shadow: 0 10px 30px rgba(31, 36, 43, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--link);
+      text-underline-offset: 0.16em;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration-thickness: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      z-index: 10;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--text);
+      color: #ffffff;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .page {
+      width: min(100% - 32px, 860px);
+      margin: 36px auto;
+    }
+
+    header,
+    main,
+    footer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      padding: clamp(24px, 6vw, 48px);
+      border-radius: 18px 18px 0 0;
+      border-bottom: 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1,
+    h2 {
+      line-height: 1.25;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 7vw, 3rem);
+      letter-spacing: -0.035em;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.3rem, 4vw, 1.65rem);
+      color: #2d3138;
+    }
+
+    p,
+    ul {
+      margin-top: 0;
+    }
+
+    p:last-child,
+    ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .lead {
+      max-width: 68ch;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .dates {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    main {
+      padding: clamp(24px, 6vw, 48px);
+      border-top: 0;
+      border-bottom: 0;
+    }
+
+    nav {
+      margin-bottom: 42px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fafafa;
+    }
+
+    nav h2 {
+      font-size: 1.05rem;
+    }
+
+    nav ol {
+      columns: 2;
+      column-gap: 32px;
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    nav li {
+      break-inside: avoid;
+      margin-bottom: 4px;
+    }
+
+    section {
+      scroll-margin-top: 20px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    section:first-of-type {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    code,
+    .placeholder {
+      padding: 0.12em 0.38em;
+      border-radius: 5px;
+      background: #f1f2f4;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.94em;
+    }
+
+    .service-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .service-list li {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fbfbfc;
+    }
+
+    .service-list strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .contact {
+      padding: 18px;
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      background: var(--accent-soft);
+    }
+
+    footer {
+      padding: 20px clamp(24px, 6vw, 48px);
+      border-radius: 0 0 18px 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 20px, 860px);
+        margin: 10px auto;
+      }
+
+      header {
+        border-radius: 12px 12px 0 0;
+      }
+
+      footer {
+        border-radius: 0 0 12px 12px;
+      }
+
+      nav ol {
+        columns: 1;
+      }
+
+      section {
+        padding: 25px 0;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+      }
+
+      header,
+      main,
+      footer {
+        border: 0;
+        box-shadow: none;
+      }
+
+      nav,
+      .skip-link {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+
+  <div class="page">
+    <header>
+      <span class="eyebrow">Gizlilik Politikası</span>
+      <h1>Mırmır Gizlilik Politikası</h1>
+      <p class="lead">
+        Bu politika, Android paket kimliği <code>com.mirmir.screenpet</code> olan
+        Mırmır uygulamasında bilgilerin nasıl işlendiğini açıklar.
+      </p>
+      <p class="dates">
+        <span><strong>Yayın tarihi:</strong> <time datetime="2026-09-06">6 Eylül 2026</time></span>
+        <span><strong>Son güncelleme:</strong> <time datetime="2026-09-06">6 Eylül 2026</time></span>
+      </p>
+    </header>
+
+    <main id="icerik">
+      <nav aria-label="İçindekiler">
+        <h2>İçindekiler</h2>
+        <ol>
+          <li><a href="#politika">Gizlilik Politikası</a></li>
+          <li><a href="#islenen-bilgiler">Toplanan / işlenen bilgiler</a></li>
+          <li><a href="#yerel-bilgiler">Cihazda yerel olarak saklanan bilgiler</a></li>
+          <li><a href="#admob">Reklamlar ve Google AdMob</a></li>
+          <li><a href="#reklam-turleri">Kişiselleştirilmiş ve kişiselleştirilmemiş reklamlar</a></li>
+          <li><a href="#satin-almalar">Uygulama içi satın almalar ve Google Play Billing</a></li>
+          <li><a href="#ekran-izni">Ekran üzerinde gösterim izni</a></li>
+          <li><a href="#foreground-service">Foreground service kullanımı</a></li>
+          <li><a href="#ucuncu-taraflar">Üçüncü taraf hizmetleri</a></li>
+          <li><a href="#guvenlik">Veri güvenliği</a></li>
+          <li><a href="#saklama">Veri saklama</a></li>
+          <li><a href="#haklar">Kullanıcı tercihleri ve hakları</a></li>
+          <li><a href="#cocuklar">Çocukların gizliliği</a></li>
+          <li><a href="#degisiklikler">Gizlilik politikasındaki değişiklikler</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ol>
+      </nav>
+
+      <section id="politika">
+        <h2>1. Gizlilik Politikası</h2>
+        <p>
+          Mırmır, kullanıcının seçimiyle diğer uygulamaların üzerinde dolaşan sanal bir evcil
+          kedi sunar. Uygulamanın mevcut sürümünde geliştirici tarafından işletilen bir üyelik,
+          kullanıcı hesabı veya kullanıcı profili sistemi bulunmaz. Ad, e-posta adresi ya da
+          benzeri profil bilgilerini girmek için bir kayıt formu sunulmaz.
+        </p>
+        <p>
+          Uygulamanın temel oyun durumu cihazdaki uygulamaya özel depolama alanında tutulur.
+          Bununla birlikte Mırmır; reklam sunmak için Google AdMob'u, dijital ürün satışlarını
+          gerçekleştirmek için Google Play Billing'i kullanır. Bu üçüncü taraf hizmetleri aşağıda
+          açıklanan bazı bilgileri kendi koşulları ve gizlilik politikaları kapsamında işleyebilir.
+        </p>
+      </section>
+
+      <section id="islenen-bilgiler">
+        <h2>2. Toplanan / işlenen bilgiler</h2>
+        <p>Mırmır'ın çalışması sırasında üç temel bilgi grubu işlenir:</p>
+        <ul>
+          <li>
+            <strong>Uygulama ve oyun bilgileri:</strong> Kedinin sağlık, tokluk, mutluluk,
+            enerji ve temizlik değerleri; mama envanteri; bakım, tedavi ve aşı durumu;
+            ödüllü reklam ilerlemesi ve ilgili zaman bilgileri.
+          </li>
+          <li>
+            <strong>Tercih ve çalışma bilgileri:</strong> Uygulama dili, ekrandaki kedinin
+            konumu, ekran üstü hizmetinin açık olup olmadığı, ekranın açılıp kapanması veya
+            kullanıcının cihaza geri dönmesi sinyalleri ve hizmetin işlevleri için gereken yerel
+            zaman kayıtları. Bu sinyaller ekran içeriğini kapsamaz; kedinin görünürlüğü ve yerel
+            davranış zamanlamaları için kullanılır.
+          </li>
+          <li>
+            <strong>Üçüncü taraf hizmet bilgileri:</strong> AdMob tarafından işlenebilen reklam,
+            cihaz, ağ, etkileşim ve teşhis bilgileri ile Google Play tarafından işlenebilen ürün,
+            satın alma, hesap ve ödeme işlemi bilgileri.
+          </li>
+        </ul>
+        <p>
+          İlk iki gruptaki bilgiler uygulamanın kendi işlevleri için yerel olarak işlenir ve
+          mevcut sürümde Mırmır geliştiricisine ait bir sunucuya gönderilmez. Üçüncü tarafların
+          veri işlemesi ise ilgili SDK'lar ve üçüncü taraf altyapısı üzerinden gerçekleşir.
+        </p>
+      </section>
+
+      <section id="yerel-bilgiler">
+        <h2>3. Cihazda yerel olarak saklanan bilgiler</h2>
+        <p>Uygulama aşağıdaki bilgileri Android'in uygulamaya özel yerel depolama alanında saklar:</p>
+        <ul>
+          <li>Kedinin sağlık, tokluk, mutluluk, enerji ve temizlik seviyeleri;</li>
+          <li>Normal mama ve ödül maması miktarları;</li>
+          <li>Tedavi sonuçları, aşı türü ve aşı zamanları;</li>
+          <li>Ödül ve aşı için izlenen reklamların yerel ilerleme kayıtları;</li>
+          <li>Zamana bağlı oyun hesaplamaları ve bekleme süreleri için zaman damgaları;</li>
+          <li>
+            Dil tercihi, kedinin ekran konumu, ekran üstü hizmetinin çalışma durumu ile son
+            kullanıcı dönüşü ve miyav zamanları.
+          </li>
+        </ul>
+        <p>
+          Satın alınan dijital ürünün sonucu yerel mama, tedavi veya aşı durumuna yansıtılır.
+          Mırmır'ın uygulama kodu ödeme kartı ya da banka hesabı bilgisini yerel olarak saklamaz.
+          Android'in cihaz yedekleme ve geri yükleme özellikleri etkinse uygulama verilerinin
+          yedeklenmesi, kullanıcının cihaz ve Google yedekleme ayarlarına tabi olabilir.
+        </p>
+      </section>
+
+      <section id="admob">
+        <h2>4. Reklamlar ve Google AdMob</h2>
+        <p>
+          Mırmır, Google Mobile Ads SDK aracılığıyla Google AdMob ödüllü reklamları gösterir.
+          Kullanıcı bir ödüllü reklamı kendi isteğiyle başlatabilir; Google Mobile Ads SDK kullanıcının
+          ödül kazandığını bildirdiğinde normal mama, ödül maması veya ilgili oyun içi aşı ilerlemesi
+          gibi bir ödül verilebilir.
+          Uygulama açılırken AdMob SDK başlatıldığından, yalnızca ödüllü reklam düğmesine basılması
+          veri işlemenin tek olası başlangıç noktası değildir.
+        </p>
+        <p>
+          Google'ın Google Mobile Ads SDK açıklamalarına göre SDK, varsayılan olarak aşağıdaki veri
+          türlerini otomatik biçimde toplar ve reklam ekosistemindeki ilgili taraflarla paylaşır.
+          Gizlilik ayarları, geçerli rıza sinyalleri, sınırlı reklam modu ve SDK yapılandırması hangi
+          verilerin iletileceğini etkileyebilir:
+        </p>
+        <ul>
+          <li>
+            IP adresi ve ağ bağlantısına ilişkin bilgiler; Google, IP adresinin cihazın genel
+            bölgesini tahmin etmek için kullanılabileceğini belirtir;
+          </li>
+          <li>
+            Android reklam kimliği, uygulama grubu kimliği ve uygulanabildiği ölçüde cihazdaki
+            oturumlarla ilişkili diğer cihaz veya hesap tanımlayıcıları;
+          </li>
+          <li>
+            Cihaz modeli, işletim sistemi, dil, uygulama adı/sürümü ve benzeri cihaz veya uygulama bilgileri;
+          </li>
+          <li>
+            Uygulama açılışı, dokunmalar, reklam/video görüntülemeleri, reklam tıklamaları,
+            tamamlanma ve ödül etkileşimleri gibi ürün etkileşimleri;
+          </li>
+          <li>
+            Uygulama ve SDK performansına ilişkin açılış süresi, takılma, enerji kullanımı ve
+            benzeri teşhis bilgileri.
+          </li>
+        </ul>
+        <p>
+          Bu bilgiler reklam sunma ve ölçme, analiz, dolandırıcılığı önleme, güvenlik, mevzuata
+          uyum ve izin verildiği durumlarda reklam kişiselleştirme amaçlarıyla kullanılabilir.
+          Ayrıntılar için
+          <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure?hl=tr"
+             target="_blank" rel="noopener noreferrer">Google Mobile Ads SDK veri açıklamasına</a>
+          bakabilirsiniz.
+        </p>
+      </section>
+
+      <section id="reklam-turleri">
+        <h2>5. Kişiselleştirilmiş ve kişiselleştirilmemiş reklamlar</h2>
+        <p>
+          AdMob, geçerli kurallara, Google ve reklam teknolojisi sağlayıcılarının ayarlarına,
+          kullanıcının Google hesabı/cihaz reklam tercihlerine ve mevcutsa geçerli rıza sinyallerine
+          göre kişiselleştirilmiş, kişiselleştirilmemiş veya sınırlı reklamlar sunabilir.
+        </p>
+        <ul>
+          <li>
+            <strong>Kişiselleştirilmiş reklamlar,</strong> izin verilen durumlarda ilgi alanları,
+            önceki etkinlikler ve tanımlayıcılar gibi sinyalleri kullanarak reklam seçebilir.
+          </li>
+          <li>
+            <strong>Kişiselleştirilmemiş veya sınırlı reklamlar,</strong> uygulamanın bağlamı gibi
+            daha sınırlı sinyallere dayanabilir. Bu reklamlar gösterildiğinde dahi reklamın
+            iletilmesi, sıklık sınırı, ölçüm, güvenlik ve dolandırıcılığı önleme için IP adresi,
+            temel cihaz bilgileri ve etkileşim bilgileri işlenebilir.
+          </li>
+        </ul>
+        <p>
+          Mırmır'ın mevcut sürümü uygulama içinde ayrı bir reklam kişiselleştirme anahtarı sunmaz.
+          Google reklam tercihleri
+          <a href="https://myadcenter.google.com/?hl=tr" target="_blank" rel="noopener noreferrer">Reklam Merkezim</a>
+          üzerinden, Android reklam kimliği tercihleri ise desteklenen cihazlarda Android ayarlarından yönetilebilir.
+        </p>
+      </section>
+
+      <section id="satin-almalar">
+        <h2>6. Uygulama içi satın almalar ve Google Play Billing</h2>
+        <p>
+          Mırmır; normal mama, ödül maması, veteriner tedavileri ve aşılar gibi tüketilebilir
+          dijital ürünleri Google Play Billing üzerinden sunar. Satın alma isteği kullanıcının
+          açık eylemiyle başlatılır. Uygulama, ürünü göstermek ve teslim etmek için ürün kimliği,
+          fiyat/görüntüleme bilgisi, satın alma durumu ve hata bilgisi gibi sınırlı işlem verilerini
+          kullanabilir.
+        </p>
+        <p>
+          Ödeme yöntemi, kart veya banka bilgileri uygulama geliştiricisi tarafından doğrudan istenmez,
+          alınmaz veya saklanmaz; ödeme Google Play ve gerektiğinde Google Payments tarafından
+          gerçekleştirilir. Google; Google hesabı, sipariş, ödeme yöntemi, faturalandırma ve işlem
+          bilgilerini kendi koşulları kapsamında işleyebilir. Mırmır'ın mevcut uygulama kodu satın alma
+          makbuzlarını veya ödeme bilgilerini geliştiriciye ait bir sunucuya göndermez.
+        </p>
+      </section>
+
+      <section id="ekran-izni">
+        <h2>7. Ekran üzerinde gösterim izni</h2>
+        <p>
+          Mırmır, kediyi diğer uygulamaların üzerinde gösterebilmek için Android'in
+          <code>SYSTEM_ALERT_WINDOW</code> (“diğer uygulamaların üzerinde göster”) yetkisini kullanır.
+          Bu özel erişim Android ayarlarında kullanıcı tarafından açıkça verilir. İzin verilmezse
+          ekran üstü kedi başlatılmaz; izin daha sonra Android ayarlarından geri alınabilir.
+        </p>
+        <p>
+          Bu yetki kediyi çizmek ve kedinin kendi arayüzündeki dokunuşlara yanıt vermek için kullanılır.
+          Mevcut uygulama kodunda ekran görüntüsü alma, ekran kaydı yapma veya diğer uygulamalarda
+          görüntülenen içeriği okumaya yönelik bir işlev bulunmaz.
+        </p>
+      </section>
+
+      <section id="foreground-service">
+        <h2>8. Foreground service kullanımı</h2>
+        <p>
+          Kullanıcı ekran üstü kediyi başlattığında Mırmır, kedinin uygulama penceresi dışında da
+          çalışabilmesi için <code>specialUse</code> türünde bir Android foreground service kullanır.
+          Hizmet için Android kurallarına uygun bir foreground service bildirimi oluşturulur;
+          bildirimin görünürlüğü Android sürümüne ve kullanıcının bildirim ayarlarına bağlı olabilir.
+          Bildirim izni desteklenen Android sürümlerinde kullanıcı tarafından yönetilebilir. Hizmet,
+          ana uygulama penceresi kapatıldıktan sonra da kullanıcı kediyi durdurana veya Android hizmeti
+          sonlandırana kadar çalışmayı sürdürebilir. Bu kullanım tek başına ek bir kişisel veri toplama
+          amacı taşımaz.
+        </p>
+      </section>
+
+      <section id="ucuncu-taraflar">
+        <h2>9. Üçüncü taraf hizmetleri</h2>
+        <p>
+          Aşağıdaki hizmetler Mırmır'ın reklam ve satın alma işlevlerinde kullanılır. Bu hizmetlerin
+          veri işlemesi kendi şartlarına ve politikalarına tabidir:
+        </p>
+        <ul class="service-list">
+          <li>
+            <strong>Google Play Hizmetleri</strong>
+            AdMob'un Android bileşenleri kapsamında kullanılır.
+            <a href="https://policies.google.com/privacy?hl=tr" target="_blank" rel="noopener noreferrer">Google Gizlilik Politikası</a>
+          </li>
+          <li>
+            <strong>Google AdMob / Google Mobile Ads SDK</strong>
+            Ödüllü reklamların yüklenmesi, gösterilmesi ve ölçülmesi için kullanılır.
+            <a href="https://policies.google.com/technologies/partner-sites?hl=tr" target="_blank" rel="noopener noreferrer">Google'ın iş ortağı uygulamalardaki bilgileri kullanımı</a>
+          </li>
+          <li>
+            <strong>Google Play Billing / Google Payments</strong>
+            Dijital ürünlerin listelenmesi, satın alma işlemi ve ödeme yönetimi için kullanılır.
+            <a href="https://payments.google.com/payments/apis-secure/get_legal_document?ldl=tr&amp;ldo=0&amp;ldt=privacynotice" target="_blank" rel="noopener noreferrer">Google Payments Gizlilik Uyarısı</a>
+          </li>
+        </ul>
+      </section>
+
+      <section id="guvenlik">
+        <h2>10. Veri güvenliği</h2>
+        <p>
+          Yerel oyun verileri Android'in uygulamaya özel depolama alanında tutulur. Kullanıcıların
+          cihaz kilidi ve güncel işletim sistemi gibi cihaz güvenliği önlemlerini kullanması önerilir.
+          Google, Google Mobile Ads SDK tarafından aktarılan verilerin aktarım sırasında TLS ile
+          şifrelendiğini belirtir. Google Play ve Google Payments verileri ilgili hizmetlerin kendi
+          güvenlik uygulamalarına tabidir.
+        </p>
+        <p>
+          İnternet üzerinden veri aktarımı veya elektronik saklama yöntemi mutlak güvenlik garantisi
+          vermez. Üçüncü taraf hizmetlerinin güvenlik uygulamaları hakkında ayrıntılı bilgi için ilgili
+          hizmetlerin yukarıda bağlantısı verilen politikaları incelenmelidir.
+        </p>
+      </section>
+
+      <section id="saklama">
+        <h2>11. Veri saklama</h2>
+        <p>
+          Yerel oyun ve tercih bilgileri uygulama kullanıldıkça güncellenir; kullanıcı uygulama verilerini
+          temizleyene veya uygulamayı kaldırana kadar cihazdaki etkin uygulama verileri içinde tutulabilir.
+          Etkin uygulama verileri normalde bu işlemlerle silinir. Ancak Android sistem yedekleri, cihaz ve
+          Google yedekleme ayarlarına göre daha uzun süre saklanabilir veya daha sonra geri yüklenebilir.
+          Yerel veriler için geliştirici tarafından işletilen ayrı bir bulut hesabı veya sunucu kaydı bulunmaz.
+        </p>
+        <p>
+          Google AdMob, Google Play ve Google Payments tarafından işlenen bilgilerin saklama süreleri
+          Google'ın ilgili politikaları, kullanıcının ayarları ve yasal yükümlülükler uyarınca belirlenir.
+        </p>
+      </section>
+
+      <section id="haklar">
+        <h2>12. Kullanıcı tercihleri ve hakları</h2>
+        <p>Kullanıcılar:</p>
+        <ul>
+          <li>Uygulama dilini değiştirebilir veya sistem diline dönebilir;</li>
+          <li>Ekran üstü kediyi durdurabilir ve ekran üzerinde gösterim/bildirim izinlerini Android ayarlarından yönetebilir;</li>
+          <li>Uygulama verilerini Android ayarlarından temizleyebilir veya uygulamayı kaldırarak yerel verileri silebilir;</li>
+          <li>Google reklam kişiselleştirme ve reklam kimliği tercihlerini Google/Android ayarlarından yönetebilir;</li>
+          <li>Uygulanabilir veri koruma mevzuatı kapsamındaki talepleri için aşağıdaki iletişim adresine başvurabilir.</li>
+        </ul>
+        <p>
+          Mevcut sürümde bu yerel veriler geliştiriciye ait bir sunucuya aktarılmadığından geliştirici
+          bunlara uzaktan erişemez veya bunları kullanıcı adına uzaktan silemez. Google tarafından işlenen
+          verilerle ilgili tercihler ve talepler Google'ın kendi gizlilik araçları üzerinden yönetilir.
+        </p>
+      </section>
+
+      <section id="cocuklar">
+        <h2>13. Çocukların gizliliği</h2>
+        <p>
+          Mırmır'ın yaş derecelendirmesi ve hedef kitlesi, Google Play mağaza kaydındaki beyanlarla
+          birlikte değerlendirilmelidir. Uygulama kullanıcı hesabı açmaz ve kullanıcıdan ad veya
+          e-posta adresi girmesini istemez; ancak AdMob ve Google Play gibi üçüncü taraf hizmetleri
+          yukarıda açıklanan bilgileri işleyebilir. Çocuk kullanıcılar için uygulanabilecek reklam,
+          yaşa uygunluk ve rıza kuralları; Google Play'de seçilen hedef yaş grubu, dağıtım bölgeleri
+          ve yürürlükteki mevzuata göre ayrıca değerlendirilmelidir.
+        </p>
+        <p>
+          Bir ebeveyn veya vasi, çocuğa ait bilgilerin bu politikaya ya da yürürlükteki kurallara
+          aykırı işlendiğini düşünürse aşağıdaki iletişim adresinden geliştiriciye ulaşabilir.
+        </p>
+      </section>
+
+      <section id="degisiklikler">
+        <h2>14. Gizlilik politikasındaki değişiklikler</h2>
+        <p>
+          Uygulamanın özellikleri, kullanılan üçüncü taraf hizmetleri veya yasal gereklilikler
+          değiştiğinde bu politika güncellenebilir. Güncel sürüm bu sayfada yayımlanır ve “Son
+          güncelleme” tarihi değiştirilir. Önemli değişiklikler uygun olduğu ölçüde uygulama veya
+          mağaza sayfası üzerinden ayrıca duyurulabilir.
+        </p>
+      </section>
+
+      <section id="iletisim">
+        <h2>15. İletişim</h2>
+        <div class="contact">
+          <p><strong>Uygulama geliştiricisi:</strong> <span class="placeholder">[DEVELOPER_NAME]</span></p>
+          <p><strong>İletişim e-postası:</strong> <span class="placeholder">[CONTACT_EMAIL]</span></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 <span class="placeholder">[DEVELOPER_NAME]</span> · Mırmır</p>
+    </footer>
+  </div>
+</body>
+</html>
+
